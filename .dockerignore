@@ -1,0 +1,32 @@
+
+# Local dependencies
+node_modules
+**/node_modules
+
+# Git files
+.git
+.gitignore
+
+# Environment files and secrets
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Build outputs
+dist
+build
+coverage
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
