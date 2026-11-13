@@ -23,7 +23,13 @@ pipeline {
 
         stage('Verify Docker') {
             steps {
-                sh 'docker --version'
+                sh 'docker info'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t kanban-dashboard:jenkins-build .'
             }
         }
     }
