@@ -32,5 +32,29 @@ pipeline {
                 sh 'docker build -t kanban-dashboard:jenkins-build .'
             }
         }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_TOKEN'
+                )]) {
+                    sh '''
+                        set +x
+
+                        echo "$DOCKER_TOKEN" | docker login \
+                          -u "$DOCKER_USER" --password-stdin
+
+                        docker tag kanban-dashboard:jenkins-build \
+                          sanjay243/kanban-dashboard:latest
+
+                        docker push sanjay243/kanban-dashboard:latest
+
+                        docker logout
+                    '''
+                }
+            }
+        }
     }
 }
