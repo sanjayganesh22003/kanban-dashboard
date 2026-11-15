@@ -71,3 +71,6 @@ export default defineConfig([
   },
 ])
 ```
+## CI/CD Automation Test
+
+Testing automatic deployment using GitHub Webhook, Jenkins, Docker, and AWS EC2.
